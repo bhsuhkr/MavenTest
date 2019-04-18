@@ -1,4 +1,5 @@
 package edu.utdallas;
+import java.io.*;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
@@ -12,13 +13,16 @@ class MyClassFileTransform implements ClassFileTransformer {
 
 
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
-        if (className.startsWith("org/apache/commons/dbutils") || className.startsWith("org/joda/time")){
+        //if (className.startsWith("org/apache/commons/dbutils") || className.startsWith("org/joda/time")){
+		  if (className.equals("FlipTableTest")) {
             ClassReader cr = new ClassReader(classfileBuffer);
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
             MyJavaClassTransformVisitor ca = new MyJavaClassTransformVisitor(cw);
             cr.accept(ca, 0);
+			System.out.format("\nHere 38 %s", className);
             return cw.toByteArray();
         }
+		//System.out.format("\nHere 39 %s", className);
         return classfileBuffer;
         
     }

@@ -13,10 +13,13 @@ public class CodeCoverageCollect {
 
     // Called whenever executing a line
     public static void addMethodLine(String className, Integer line){
+		 System.out.println("Here 2");
     	if (coverage_testCase == null) {
     		return;
     	}
     	
+		 System.out.println("Here 3");
+		 
     	IntSet lines = coverage_testCase.get(className);
         if (lines != null) {
         	lines.add(line);

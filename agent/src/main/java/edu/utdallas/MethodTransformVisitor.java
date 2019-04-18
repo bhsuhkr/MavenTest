@@ -19,16 +19,25 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
     public void visitLineNumber(int line, Label start) {
 		if (0 != line) {
 	    	lastVisitedLine = line;
-	    	
+			
 			mv.visitLdcInsn(className);
 			mv.visitLdcInsn(new Integer(line));
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
 			mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
+	    	
+			//mv.visitLdcInsn(className);
+			//mv.visitLdcInsn(new Integer(line));
+			//mv.visitIntInsn(SIPUSH, line);
+			//mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
+			//mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
+			 System.out.format("Here 1 %s", line);
 
 		//	mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
 	    	//mv.visitLdcInsn(className + " : " + line);
 	    //	mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V");
-	}
+		}
+		
+		//System.out.println("Here 1.5");
 		
     	super.visitLineNumber(line, start);
 	}
