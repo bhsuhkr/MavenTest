@@ -6,20 +6,20 @@ import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.RunListener;
 
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.HashMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
 public class MyJUnitExecutionListener extends RunListener {
     
-    // Object2ObjectOpenHashMap<String, Object2ObjectOpenHashMap<String, IntSet>> Coverages_testCase;
-    // Object2ObjectOpenHashMap<String, IntSet> Coverage_testCase;
+    // HashMap<String, HashMap<String, IntSet>> Coverages_testCase;
+    // HashMap<String, IntSet> Coverage_testCase;
 
 	// Called before all tests
 	public void testRunStarted(Description description) throws Exception {
 		if (null == CodeCoverageCollect.coverages_testCase)
 		{
-			CodeCoverageCollect.coverages_testCase = new Object2ObjectOpenHashMap<String, Object2ObjectOpenHashMap<String, IntSet>>();
+			CodeCoverageCollect.coverages_testCase = new HashMap<String, HashMap<String, IntSet>>();
 		}
 		
         System.out.println("\nTest Start");
@@ -29,7 +29,7 @@ public class MyJUnitExecutionListener extends RunListener {
     public void testStarted(Description description) {
     	// Note: Java is pass by value, so this works
     	CodeCoverageCollect.name_testCase = "[TEST] " + description.getClassName() + ":" + description.getMethodName();
-    	CodeCoverageCollect.coverage_testCase = new Object2ObjectOpenHashMap<String, IntSet>();
+    	CodeCoverageCollect.coverage_testCase = new HashMap<String, IntSet>();
         IntSet lines = new IntOpenHashSet(new int[]{});
         CodeCoverageCollect.coverage_testCase.put("Test", lines);
     }
@@ -52,7 +52,7 @@ public class MyJUnitExecutionListener extends RunListener {
         for (String testCaseName : CodeCoverageCollect.coverages_testCase.keySet()) {
         	builder.append(testCaseName + "\n");
         	
-        	Object2ObjectOpenHashMap<String, IntSet> caseCoverage = CodeCoverageCollect.coverages_testCase.get(testCaseName);
+        	HashMap<String, IntSet> caseCoverage = CodeCoverageCollect.coverages_testCase.get(testCaseName);
 
             for (String className : caseCoverage.keySet()) {
             	
