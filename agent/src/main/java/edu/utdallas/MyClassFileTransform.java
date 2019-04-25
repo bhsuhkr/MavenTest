@@ -14,7 +14,7 @@ class MyClassFileTransform implements ClassFileTransformer {
 
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         
-		if (className.equals("FlipTable")) {
+		if (className.equals("Functions")) {
          // if (className.startsWith("main/java/other")){
             ClassReader cr = new ClassReader(classfileBuffer);
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
