@@ -14,15 +14,7 @@
  * limitations under the License.
  */
 
-/**
- * <pre>
- * ╔═════════════╤════════════════════════════╤══════════════╗
- * ║ Name        │ Function                   │ Author       ║
- * ╠═════════════╪════════════════════════════╪══════════════╣
- * ║ Flip Tables │ Pretty-print a text table. │ Jake Wharton ║
- * ╚═════════════╧════════════════════════════╧══════════════╝
- * </pre>
- */
+
 public final class FlipTable {
   private static final String EMPTY = "(empty)";
   private static final String ANSI_COLORS = "\u001B\\[[;\\d]*m";

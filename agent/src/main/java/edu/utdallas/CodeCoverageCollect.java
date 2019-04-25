@@ -29,11 +29,8 @@ public class CodeCoverageCollect {
         }
     }
 
-     public static void addMethodParameter(String parameterName){
-        System.out.println("Test Here");
-        parameterList.add("Added from CodeCoverage");
-        parameterList.add(parameterName);
-        
+     public static void addMethodParameter(String opcode, String var){
+        parameterList.add(opcode + " " + var);
         
     }
 }

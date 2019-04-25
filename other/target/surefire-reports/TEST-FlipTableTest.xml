@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="FlipTableTest" time="0.056" tests="17" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="FlipTableTest" time="0.042" tests="17" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_201\jre\bin"/>
@@ -69,16 +69,16 @@
   <testcase name="headerNewlineFirstLineShort" classname="FlipTableTest" time="0"/>
   <testcase name="emptyWide" classname="FlipTableTest" time="0"/>
   <testcase name="emptyThinTwoColumns" classname="FlipTableTest" time="0"/>
-  <testcase name="rowColumnMismatchThrowsWhenLess" classname="FlipTableTest" time="0.012"/>
+  <testcase name="rowColumnMismatchThrowsWhenLess" classname="FlipTableTest" time="0.018"/>
   <testcase name="rowColumnMismatchThrowsWhenMore" classname="FlipTableTest" time="0.002"/>
-  <testcase name="nested" classname="FlipTableTest" time="0.013"/>
-  <testcase name="dataWithColor" classname="FlipTableTest" time="0.005"/>
-  <testcase name="simple" classname="FlipTableTest" time="0.002"/>
+  <testcase name="nested" classname="FlipTableTest" time="0.002"/>
+  <testcase name="dataWithColor" classname="FlipTableTest" time="0.002"/>
+  <testcase name="simple" classname="FlipTableTest" time="0.001"/>
   <testcase name="nullDataThrows" classname="FlipTableTest" time="0.001"/>
-  <testcase name="nullHeadersThrows" classname="FlipTableTest" time="0"/>
-  <testcase name="empty" classname="FlipTableTest" time="0.005"/>
+  <testcase name="nullHeadersThrows" classname="FlipTableTest" time="0.001"/>
+  <testcase name="empty" classname="FlipTableTest" time="0"/>
   <testcase name="emptyHeadersThrows" classname="FlipTableTest" time="0"/>
-  <testcase name="headerWithColor" classname="FlipTableTest" time="0.001"/>
-  <testcase name="emptyThinOneColumn" classname="FlipTableTest" time="0"/>
+  <testcase name="headerWithColor" classname="FlipTableTest" time="0.002"/>
+  <testcase name="emptyThinOneColumn" classname="FlipTableTest" time="0.001"/>
   <testcase name="headerNewlineFirstLineLong" classname="FlipTableTest" time="0.001"/>
 </testsuite>

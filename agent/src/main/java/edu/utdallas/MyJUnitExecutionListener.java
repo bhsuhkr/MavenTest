@@ -58,9 +58,10 @@ public class MyJUnitExecutionListener extends RunListener {
         StringBuilder builder2 = new StringBuilder();
 
         // if(CodeCoverageCollect.parameterList != null){
+        System.out.println("Diakon Added ");
         for (String par_name : CodeCoverageCollect.parameterList) {
             builder2.append(par_name + "\n");
-            System.out.println("Added");
+            
         }
         // }
         for (String testCaseName : CodeCoverageCollect.coverages_testCase.keySet()) {
@@ -81,7 +82,6 @@ public class MyJUnitExecutionListener extends RunListener {
         }
         bw.write(builder.toString());
         bw.close();
-        bw2.write("TEST");
         bw2.write(builder2.toString());
         bw2.close();
 
