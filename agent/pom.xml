@@ -42,7 +42,7 @@
                         </manifest>
                     <archive>
                         <manifestEntries>
-                            <Premain-Class>edu.utdallas.Agent</Premain-Class>
+                            <Premain-Class>agent.Agent</Premain-Class>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
                     </archive>

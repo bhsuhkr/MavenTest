@@ -68,7 +68,7 @@
           <properties>
             <property> 
             	<name>listener</name>
-            	<value>edu.utdallas.MyJUnitExecutionListener</value>
+            	<value>agent.JUnitListener</value>
             </property>
           </properties>
         </configuration>
