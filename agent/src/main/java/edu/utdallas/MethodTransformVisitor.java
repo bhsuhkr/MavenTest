@@ -18,7 +18,6 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 
     @Override
     public void visitParameter(String name, int access){
-        System.out.println("-****************--------visitParameter Method -****************-----------");
         super.visitParameter(name, access);
     }
 
