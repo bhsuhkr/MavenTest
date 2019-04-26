@@ -11,8 +11,7 @@ public class CodeCoverageCollect {
 	public static HashMap<String, HashMap<String, IntSet>> coverages_testCase;
 	public static HashMap<String, IntSet> coverage_testCase;
 	public static String name_testCase;
-    public static List<String> parameterList;
-    public static HashMap<String, String> parameterNameList;
+    public static List<String> parameterList; 
 
     // Called whenever executing a line
     public static void addMethodLine(String className, Integer line){
@@ -30,15 +29,9 @@ public class CodeCoverageCollect {
         }
     }
 
-    public static void addMethodVariable(String name, String index){
-        System.out.println("name: " + name);
-        parameterNameList.put(index, name);
+    public static void addMethodParameter(String opcode, String varName){
+        // System.out.println("opcode: " + opcode + " " + var + "varName: " + varName);
+        parameterList.add(opcode + " " + varName);
     }
 
-    public static void addMethodParameter(String opcode, String var){
-        // System.out.println("opcode: " + opcode + " " + var);
-        parameterList.add(opcode + " " + var);
-    }
-
-    
 }

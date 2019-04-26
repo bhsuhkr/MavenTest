@@ -9,6 +9,7 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
     
     protected int lastVisitedLine;
 	protected String className;
+    static String varName = null;
 	
     public MethodTransformVisitor(final MethodVisitor mv, String nameOfclass) {
         super(ASM5, mv);
@@ -35,19 +36,18 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 
     @Override
     public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index){
-        // System.out.println(name + " " + index);
-        System.out.println("visitLocalVariable");
-        mv.visitLdcInsn("test1");
-        mv.visitLdcInsn("test2");
-        // mv.visitLdcInsn(String.valueOf(index));
-        mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodVariable", "(Ljava/lang/String;Ljava/lang/String;)V", false);
-        super.visitLocalVariable(name, desc,signature,start,end,index);
+        varName = name;
+        super.visitLocalVariable(name, desc, signature, start, end, index);
     }
 
     @Override
     public void visitVarInsn(int opcode, int var){
         mv.visitLdcInsn(String.valueOf(opcode));
-        mv.visitLdcInsn(String.valueOf(var));
+        if(varName != null && !varName.isEmpty()){
+            mv.visitLdcInsn(varName);
+        }else{
+            mv.visitLdcInsn("None");    
+        }
         mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodParameter", "(Ljava/lang/String;Ljava/lang/String;)V", false);
         super.visitVarInsn(opcode, var);   
     }

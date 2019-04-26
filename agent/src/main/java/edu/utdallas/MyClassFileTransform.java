@@ -14,12 +14,13 @@ class MyClassFileTransform implements ClassFileTransformer {
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
         
 		if (className.equals("FlipTable") || className.equals("FlipTableConverters")) {
-         // if (className.startsWith("main/java/other")){
+         // if (className.startsWith("other")){
             ClassReader cr = new ClassReader(classfileBuffer);
+            // ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_FRAMES);
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
             MyJavaClassTransformVisitor ca = new MyJavaClassTransformVisitor(cw);
             cr.accept(ca, 0);
-			// System.out.format("\nHere 38 %s", className);
+			
             return cw.toByteArray();
         }
 		

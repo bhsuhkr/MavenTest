@@ -22,7 +22,6 @@ public class MyJUnitExecutionListener extends RunListener {
 		{
 			CodeCoverageCollect.coverages_testCase = new HashMap<String, HashMap<String, IntSet>>();
             CodeCoverageCollect.parameterList = new ArrayList<String>();
-            CodeCoverageCollect.parameterNameList = new HashMap<String, String>();
 		}
 		
         System.out.println("\nTest Start");
@@ -61,12 +60,7 @@ public class MyJUnitExecutionListener extends RunListener {
         // if(CodeCoverageCollect.parameterList != null){
         System.out.println("Diakon Added ");
         for (String par_name : CodeCoverageCollect.parameterList) {
-            String[] parts = par_name.split(" ");
-            // System.out.println(parts[0] + " " + parts[1]);
-            // System.out.println(CodeCoverageCollect.parameterNameList.get("0"));
-            // System.out.println(parts[1]);
-            // builder2.append(CodeCoverageCollect.parameterNameList.get(parts[1]).trim() + "\n");
-            
+            builder2.append(par_name + "\n");
         }
         
         for (String testCaseName : CodeCoverageCollect.coverages_testCase.keySet()) {
