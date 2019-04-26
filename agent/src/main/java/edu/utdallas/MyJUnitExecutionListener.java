@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.RunListener;
-
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.HashMap;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
@@ -22,6 +22,7 @@ public class MyJUnitExecutionListener extends RunListener {
 		{
 			CodeCoverageCollect.coverages_testCase = new HashMap<String, HashMap<String, IntSet>>();
             CodeCoverageCollect.parameterList = new ArrayList<String>();
+            CodeCoverageCollect.parameterNameList = new HashMap<String, String>();
 		}
 		
         System.out.println("\nTest Start");
@@ -60,10 +61,14 @@ public class MyJUnitExecutionListener extends RunListener {
         // if(CodeCoverageCollect.parameterList != null){
         System.out.println("Diakon Added ");
         for (String par_name : CodeCoverageCollect.parameterList) {
-            builder2.append(par_name + "\n");
+            String[] parts = par_name.split(" ");
+            // System.out.println(parts[0] + " " + parts[1]);
+            // System.out.println(CodeCoverageCollect.parameterNameList.get("0"));
+            // System.out.println(parts[1]);
+            // builder2.append(CodeCoverageCollect.parameterNameList.get(parts[1]).trim() + "\n");
             
         }
-        // }
+        
         for (String testCaseName : CodeCoverageCollect.coverages_testCase.keySet()) {
         	builder.append(testCaseName + "\n");
         	

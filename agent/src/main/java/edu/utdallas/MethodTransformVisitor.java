@@ -29,36 +29,35 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
 			mv.visitLdcInsn(new Integer(line));
 			mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
 			mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodLine", "(Ljava/lang/String;Ljava/lang/Integer;)V", false);
-	    	
-		
-		//	mv.visitFieldInsn(GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-	    	//mv.visitLdcInsn(className + " : " + line);
-	    //	mv.visitMethodInsn(INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V");
 		}
     	super.visitLineNumber(line, start);
 	}
 
+    @Override
+    public void visitLocalVariable(String name, String desc, String signature, Label start, Label end, int index){
+        // System.out.println(name + " " + index);
+        System.out.println("visitLocalVariable");
+        mv.visitLdcInsn("test1");
+        mv.visitLdcInsn("test2");
+        // mv.visitLdcInsn(String.valueOf(index));
+        mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodVariable", "(Ljava/lang/String;Ljava/lang/String;)V", false);
+        super.visitLocalVariable(name, desc,signature,start,end,index);
+    }
 
     @Override
     public void visitVarInsn(int opcode, int var){
-        // System.out.println("-****************--------visitVarInsn Method -****************-----------");
-        // System.out.println(opcode + " " + var);
         mv.visitLdcInsn(String.valueOf(opcode));
         mv.visitLdcInsn(String.valueOf(var));
-        // mv.visitMethodInsn(INVOKESTATIC, "java/lang/Integer", "valueOf", "(I)Ljava/lang/Integer;", false);
         mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodParameter", "(Ljava/lang/String;Ljava/lang/String;)V", false);
-
-        // mv.visitVarIns(opcode, param);
         super.visitVarInsn(opcode, var);   
     }
     
 
     @Override
     public void visitEnd() {
-        // System.out.println("-****************--------visitEnd Method -****************-----------");
         super.visitEnd();
     } 
-    // visitlabel
+    
 
     //  @Override
     // public void visitLabel(Label label){
@@ -69,12 +68,6 @@ class MethodTransformVisitor extends MethodVisitor implements Opcodes {
     //     super.visitLabel(label);
     // }
 
-    // @Override
-    // public void visitLocalVariable(String name,String desc,String signature,Label start,Label end,int index){
-    //     // System.out.println("name: " + name + " value: " + desc);
-    //     // mv.visitLdcInsn(className);
-    //     // mv.visitMethodInsn(INVOKESTATIC, "edu/utdallas/CodeCoverageCollect", "addMethodParameter", "(Ljava/lang/String;)V", false);   d
-    //     super.visitLocalVariable(name, desc,signature,start,end,index);
-    // }
+    
 
 }
